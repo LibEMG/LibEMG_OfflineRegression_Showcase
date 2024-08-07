@@ -33,7 +33,7 @@ def main():
 
     fe = FeatureExtractor()
     om = OfflineMetrics()
-    models = ['SVM', 'LR', 'RF']
+    models = ['LR', 'GB']
 
     # Make training set
     training_set = {
@@ -55,7 +55,7 @@ def main():
 
         metrics = om.extract_offline_metrics(results.keys(), test_labels, predictions)
         for metric in metrics:
-            results[metric].append(metrics[metric])
+            results[metric].append(metrics[metric].mean())
     
     fig, axs = plt.subplots(nrows=len(results), layout='constrained')
     for metric, ax in zip(results.keys(), axs):
