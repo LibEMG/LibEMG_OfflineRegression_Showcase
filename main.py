@@ -57,7 +57,7 @@ def main():
         for metric in metrics:
             results[metric].append(metrics[metric].mean())
     
-    fig, axs = plt.subplots(nrows=len(results), layout='constrained')
+    fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8))
     for metric, ax in zip(results.keys(), axs):
         ax.bar(models, results[metric])
         ax.set_title(metric)
