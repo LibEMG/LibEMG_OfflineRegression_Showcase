@@ -12,7 +12,7 @@ from libemg.emg_predictor import EMGRegressor
 
 
 def main():
-    parser = ArgumentParser()
+    parser = ArgumentParser(prog='Offline Regression Example', description='Simple offline regression example. Tests performance of multiple regressors.')
     parser.add_argument('--window_size', type=int, default=150, help='Window length (samples). Defaults to 150.')
     parser.add_argument('--window_increment', type=int, default=40, help='Window increment (samples). Defaults to 40.')
     parser.add_argument('--feature_set', type=str, choices=FeatureExtractor().get_feature_groups().keys(), help='Feature set to use. Defaults to HTD.')
