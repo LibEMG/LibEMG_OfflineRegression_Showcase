@@ -23,8 +23,8 @@ def main():
     odh = OneSubjectEMaGerDataset().prepare_data()
 
     # Split into train/test reps
-    train_odh = odh.isolate_data('reps', [0, 1, 2, 3, 4])
-    test_odh = odh.isolate_data('reps', [5])
+    train_odh = odh.isolate_data('reps', [0, 1, 2, 3])
+    test_odh = odh.isolate_data('reps', [4])
 
     # Extract windows
     train_windows, train_metadata = train_odh.parse_windows(args.window_size, args.window_inc)
