@@ -27,8 +27,9 @@ def main():
     test_odh = odh.isolate_data('reps', [4])
 
     # Extract windows
-    train_windows, train_metadata = train_odh.parse_windows(args.window_size, args.window_inc)
-    test_windows, test_metadata = test_odh.parse_windows(args.window_size, args.window_inc)
+    metadata_operations = {'labels': lambda x: x[-1]}   # grab label of last sample in window
+    train_windows, train_metadata = train_odh.parse_windows(args.window_size, args.window_increment, metadata_operations=metadata_operations)
+    test_windows, test_metadata = test_odh.parse_windows(args.window_size, args.window_increment, metadata_operations=metadata_operations)
 
     fe = FeatureExtractor()
     om = OfflineMetrics()
