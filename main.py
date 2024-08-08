@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 
+import numpy as np
 import matplotlib.pyplot as plt
 from libemg.offline_metrics import OfflineMetrics
 from libemg.datasets import OneSubjectEMaGerDataset
@@ -59,13 +60,15 @@ def main():
         for metric in metrics:
             results[metric].append(metrics[metric].mean())
 
+        # Note: this will block the main thread once the plot is shown. Close the plot to continue execution.
         reg.visualize(test_labels, predictions)
     
-    fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8))
+    fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8), sharex=True)
     for metric, ax in zip(results.keys(), axs):
-        ax.bar(models, results[metric])
-        ax.set_title(metric)
+        ax.bar(models, np.array(results[metric]) * 100)
+        ax.set_ylabel(f"{metric} (%)")
 
+    fig.suptitle('Metrics Summary')
     plt.show()
 
 
