@@ -1,2 +1,5 @@
 # LibEMG_OfflineRegression_Showcase
+
 Brief example showcasing offline regression capabilities.
+
+<img src="docs/results.png">
