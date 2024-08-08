@@ -61,6 +61,7 @@ def main():
             results[metric].append(metrics[metric].mean())
 
         # Note: this will block the main thread once the plot is shown. Close the plot to continue execution.
+        print('Plotting decision stream. This will block the main thread once the plot is shown. Close the plot to continue.')
         reg.visualize(test_labels, predictions)
     
     fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8), sharex=True)
