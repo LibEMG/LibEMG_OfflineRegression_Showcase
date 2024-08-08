@@ -64,9 +64,10 @@ def main():
         print('Plotting decision stream. This will block the main thread once the plot is shown. Close the plot to continue.')
         reg.visualize(test_labels, predictions)
     
-    fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8), sharex=True)
+    plt.style.use('ggplot')
+    fig, axs = plt.subplots(ncols=len(results), layout='constrained', figsize=(10, 5))
     for metric, ax in zip(results.keys(), axs):
-        ax.bar(models, np.array(results[metric]) * 100)
+        ax.bar(models, np.array(results[metric]) * 100, width=0.2)
         ax.set_ylabel(f"{metric} (%)")
 
     fig.suptitle('Metrics Summary')
