@@ -36,16 +36,17 @@ def main():
     models = ['LR', 'GB']
 
     # Make training set
-    training_set = {
-        'training_features': fe.extract_feature_group(args.feature_set, train_windows, array=True),
-        'training_labels': train_metadata['labels']
-    }
-
+    training_features = fe.extract_feature_group(args.feature_set, train_windows, array=True)
+    training_labels = train_metadata['labels']
     test_features = fe.extract_feature_group(args.feature_set, test_windows, array=True)
     test_labels = test_metadata['labels']
 
-    results = {metric: [] for metric in ['R2', 'NRMSE', 'MAE']}
+    training_set = {
+        'training_features': training_features,
+        'training_labels': training_labels
+    }
 
+    results = {metric: [] for metric in ['R2', 'NRMSE', 'MAE']}
     for model in models:
         reg = EMGRegressor(model)
 
