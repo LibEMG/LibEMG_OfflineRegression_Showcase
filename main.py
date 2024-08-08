@@ -57,6 +57,8 @@ def main():
         metrics = om.extract_offline_metrics(results.keys(), test_labels, predictions)
         for metric in metrics:
             results[metric].append(metrics[metric].mean())
+
+        reg.visualize(test_labels, predictions)
     
     fig, axs = plt.subplots(nrows=len(results), layout='constrained', figsize=(8, 8))
     for metric, ax in zip(results.keys(), axs):
