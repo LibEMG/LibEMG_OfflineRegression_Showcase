@@ -51,6 +51,7 @@ def main():
         reg = EMGRegressor(model)
 
         # Fit and run model
+        print(f"Fitting {model}...")
         reg.fit(training_set.copy())
         predictions = reg.run(test_features)
 
